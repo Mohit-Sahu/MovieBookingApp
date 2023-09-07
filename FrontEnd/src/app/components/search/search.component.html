@@ -1,0 +1,84 @@
+
+        <section *ngIf="isAdmin() || isUser()" class="py-5" >
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-4 row-cols-md-4 row-cols-xl-4 justify-content-center">
+                    <div class="col mb-5"  *ngFor="let movie of movies">
+                        <div class="card h-80">
+                            <!-- Movie image-->
+                            <img class="card-img-top" src="./assets/images/logo.png" alt="..." />
+                            <!-- Movie details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Movie name-->
+                                    <h4 class="fw-bolder">{{movie.key.movieName}}</h4>
+                                    <h6 class="fw-bolder">Theatre:{{movie.key.theatreName}}</h6>
+                                    <p>Seats Available:{{movie.totalNoOfTickets}}</p>
+                                
+                                
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="bookTicket(movie)">Book Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                   
+                   
+                    
+                
+                
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+       
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+
+        <div *ngIf="!isUser()&&isAdmin()" class="gradient-custom">
+            <div class="container py-5 h-100">
+                <div class="card">
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Movie Name</th>
+                                <th>Theatre Name </th>
+                                <th>Tickets Available</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let movie of movies |paginate:{
+                    itemsPerPage: tableSize,
+                    currentPage:page};">
+                                <td> {{ movie.key.movieName }} </td>
+                                <td> {{ movie.key.theatreName }} </td>
+                                <td>{{ movie.totalNoOfTickets}}</td>
+                                <td>
+                                    <button class="btn btn-danger mr-5"
+                                        (click)="deleteMovie(movie.key.movieName,movie.key.theatreName)">Delete</button>
+                                    <button class="btn btn-primary"
+                                        (click)="updateMovie(movie.key.movieName,movie)">Update</button>
+                                </td>
+        
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+        
+                        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                        </pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <mat-paginator #paginator [pageSizeOptions]="[2, 4, 6]" 
+        showFirstLastButtons></mat-paginator> -->
+    
+

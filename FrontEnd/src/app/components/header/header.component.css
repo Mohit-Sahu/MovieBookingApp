@@ -1,0 +1,21 @@
+.navbar-dark .nav-item .nav-link {
+    color: #fff;
+  }
+  .navbar-dark{
+    background-color: rgb(70, 70, 70);
+  }
+  
+  .navbar-dark .nav-item .nav-link:hover {
+    background-color: rgba(105, 101, 101, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+    color: #fff;
+  }
+  .btn-login{
+ background-color: rgb(223, 205, 106);
+  }
+  
+  .fa-li {
+    position: relative;
+    left: 0;
+  }

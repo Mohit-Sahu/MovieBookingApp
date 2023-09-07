@@ -1,0 +1,68 @@
+<!-- Navbar -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#"><img id="MJ-logo" src="./assets/images/logo.png" alt="MJ Logo" draggable="false"
+        height="50" width="100" /></a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left links -->
+      <ul class="navbar-nav me-3">
+        <li class="nav-item">
+          <a class="nav-link active d-flex align-items-center" aria-current="page" href="#"><i
+              class="fas fa-bars pe-2"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active d-flex align-items-center" aria-current="page" href="#"><i
+              class="fas fa-bars pe-2"></i>About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active d-flex align-items-center" aria-current="page" href="#"><i
+              class="fas fa-bars pe-2"></i>Contact</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <form class="d-flex align-items-center w-50 form-search" name="form" #f="ngForm">
+        <div class="input-group">
+          <input type="search" class="form-control"  #searchInput [(ngModel)]="searchKeyword" name="search" placeholder="Search" aria-label="Search"
+          (keyup)="search(searchInput)"/>
+        </div>
+        <a href="#!" class="text-white"><i class="fas fa-search ps-3"></i></a>
+      </form>
+
+      <ul class="navbar-nav ms-3">
+        <!-- <li class="nav-item me-3">
+          <a class="nav-link d-flex align-items-center" href="#!">IMDbPro</a>
+        </li> -->
+        <li class="nav-item" >
+          <a class="nav-link d-flex align-items-center me-3" routerLink="/movielist">
+            <i class="fas fa-bookmark pe-2" *ngIf="isLoggedIn()&&isAdmin()"></i> Movielist
+          </a>
+        </li>
+        <li class="nav-item" style="width: 85px;">
+          <button *ngIf="!isLoggedIn()" type="button" class="btn btn-login" routerLink="/login">Sign In</button>
+        </li>
+        <li style="width: 85px;">
+          <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Log-Out</button>
+
+        </li>
+
+
+      </ul>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
